@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Nadika Zavodovska (nadika-zavodovska)</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
 
-  <body>
-    <div id="root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Show Project | Nadika Zavodovska (nadika-zavodovska)</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <div id="root">
+    <div class="wrapper">
+      <h1 id="episode_title">All episodes from Season 1 of Game of Thrones <span id="episode_code"></span></h1>
+      <template id="episode-card-template">
+        <section>
+          <h2 id="episode_title"></h2>
+          <span id="episode_code"></span>
+          <h3 id="season_number_title">Season number: </h3>
+          <span id="season_number"></span>
+          <h3 id="episode_number_title">Episode number: </h3>
+          <span id="episode_number"></span>
+          <img src="" alt="" id="episode_img_medsize">
+          <div id="episode_summary"></div>        
+        </section>
+      </template>
     </div>
+  </div>
 
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
+  <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+  <script src="episodes.js"></script>
 
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-  </body>
+  <!-- Loads YOUR javascript code -->
+  <script src="script.js"></script>
+</body>
+
 </html>
