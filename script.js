@@ -7,11 +7,10 @@ function setup() {
 
 function createEpisodeCard(episode){
   const episodeCard = document.getElementById("episode-card-template").content.cloneNode(true);
-  const episodeTitle = episodeCard.getElementById("episode_title");
-  const episodeCodeField = episodeCard.getElementById("episode_code");
+  const episodeTitle = episodeCard.getElementById("episode_title");  
   const seasonNum = episode.season;
   const episodeNum = episode.number;
-  const episodeCode = `S${seasonNum.toString().padStart(2, 0)}E${episodeNum.toString().padStart(2, 0)}`;
+  const episodeCode = ` - S${seasonNum.toString().padStart(2, 0)}E${episodeNum.toString().padStart(2, 0)}`;
   const seasonNumber = episodeCard.getElementById("season_number");
   const episodeNumber = episodeCard.getElementById("episode_number");
   const episodeDuration = episodeCard.getElementById("episode_duration");
@@ -19,8 +18,7 @@ function createEpisodeCard(episode){
   const episodeSummary = episodeCard.getElementById("episode_summary");
   const episodeButton = episodeCard.getElementById("episode_button");
   
-  episodeTitle.textContent = episode.name;
-  episodeCodeField.textContent = episodeCode;
+  episodeTitle.textContent = episode.name + episodeCode;  
   seasonNumber.textContent = episode.season;
   episodeNumber.textContent = episode.number;
   episodeDuration.textContent = episode.runtime;

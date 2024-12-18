@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,22 +9,19 @@
 </head>
 
 <body>
+  <h1 id="episode_title">All episodes from Season 1 of Game of Thrones <span id="episode_code"></span></h1>
   <div id="root">
     <div class="wrapper">
-      <h1 id="episode_title">All episodes from Season 1 of Game of Thrones <span id="episode_code"></span></h1>
-      <template id="episode-card-template">
-        <section>
+      <template id="episode-card-template" class="episode_card_block">
+        <section id="episode_card_section">
           <h2 id="episode_title"></h2>
           <span id="episode_code"></span>
-          <h3 id="season_number_title">Season number: </h3>
-          <span id="season_number"></span>
-          <h3 id="episode_number_title">Episode number: </h3>
-          <span id="episode_number"></span>
-          <h3 id="episode_duration_title"></h3>
-          <span id="episode_duration"></span>
+          <h3 id="season_number_title">Season number: <span id="season_number"></span></h3>
+          <h3 id="episode_number_title">Episode number: <span id="episode_number"></span></h3>
+          <h3 id="episode_duration_title">Duration: <span id="episode_duration"></span></h3>
           <img src="" alt="" id="episode_img_medsize">
-          <div id="episode_summary"></div>     
-          <a href="" id="episode_button" target="_blank">Read more</a>          
+          <div id="episode_summary"></div>
+          <a href="" id="episode_button" target="_blank">Read more</a>
         </section>
       </template>
     </div>

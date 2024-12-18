@@ -1,3 +1,32 @@
-#root {
-  color: red;
+body{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;  
+}
+h3{
+  margin: 5px;
+}
+#episode_title{
+  text-align: center;
+  width: 100%; 
+}
+#episode_card_section{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 27%;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+#episode_title{
+  display: inline;
+}
+#episode_img_medsize{
+  border-radius: 10px;
+}
+#episode_duration{
+  font-weight: 600;
 }
