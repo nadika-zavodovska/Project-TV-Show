@@ -1,23 +1,57 @@
-//You can edit ALL of the code here
-function setup() {
-  const allEpisodes = getAllEpisodes();
+// Declare and assign an array to store the episode data 
+let allEpisodes = [];
 
+function setup() {
   // Create a container for episodes
   const episodeContainer = document.createElement("div");
   episodeContainer.id = "episodes-container";
   document.body.appendChild(episodeContainer);
 
-  // Render all episodes initially
-  renderEpisodes(allEpisodes, episodeContainer);
+  // Show a loading message while the data is fetching
+  const loadingMessage = document.createElement("p");
+  loadingMessage.textContent = "Loading episodes, please wait...";
+  document.body.insertBefore(loadingMessage, episodeContainer);
 
-  // Add search box and episode selector
-  setupSearch(allEpisodes, episodeContainer);
-  setupEpisodeSelector(allEpisodes, episodeContainer);
+  // Fetch the episodes data
+  fetchEpisodes().then((episodes) => {
+    // When the data is fetched, remove the loading message.
+    loadingMessage.remove();
+    // Store the fetched episodes
+    allEpisodes = episodes;
+
+    // Render all episodes initially
+    renderEpisodes(allEpisodes, episodeContainer);
+    // Add search box and episode selector
+    setupSearch(allEpisodes, episodeContainer);
+    setupEpisodeSelector(allEpisodes, episodeContainer);
+  }).catch((error) => {
+    loadingMessage.textContent = "Failed to load episodes. Please try again later.";
+    console.error("Error loading episodes:", error);
+  });
+}
+
+// Fetch episodes from the API
+async function fetchEpisodes() {
+  // If data is already fetched, return the cached data
+  if (allEpisodes.length > 0) {
+    return allEpisodes;
+  }
+  try {
+    const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const episodes = await response.json();
+    return episodes;
+  } catch (error) {
+    throw new Error("Failed to fetch episodes: " + error.message);
+  }
 }
 
 // Function to render episodes into the container
 function renderEpisodes(episodes, container) {
-  container.innerHTML = ""; // Clear previous content
+  // Clear previous content
+  container.innerHTML = "";
   if (episodes.length === 0) {
     container.textContent = "No episodes match your search.";
   } else {
@@ -77,7 +111,6 @@ function setupSearch(episodes, episodeContainer) {
         ep.name.toLowerCase().includes(searchTerm) ||
         (ep.summary && ep.summary.toLowerCase().includes(searchTerm))
     );
-
     // Update results count
     resultsCount.textContent = `${filteredEpisodes.length} / ${episodes.length} episodes shown`;
 
@@ -100,12 +133,11 @@ function setupEpisodeSelector(episodes, episodeContainer) {
   // Populate the selector
   episodes.forEach((episode) => {
     const option = document.createElement("option");
-    option.value = episode.id; // Use a unique identifier for each episode
+    option.value = episode.id;
     option.textContent = `S${episode.season
       .toString()
-      .padStart(2, "0")}E${episode.number.toString().padStart(2, "0")} - ${
-      episode.name
-    }`;
+      .padStart(2, "0")}E${episode.number.toString().padStart(2, "0")} - ${episode.name
+      }`;
     episodeSelector.appendChild(option);
   });
 
