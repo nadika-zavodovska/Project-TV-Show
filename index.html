@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,26 +10,52 @@
 </head>
 
 <body>
-  <h1 id="episode_title">All episodes from Season 1 of Game of Thrones <span id="episode_code"></span></h1>
+  <header>
+    <h1 class="show-page-title">Choose your show and episode from TVMaze</h1>
+  </header>
   <div id="root">
-    <div class="wrapper">
-      <template id="episode-card-template" class="episode_card_block">
-        <section id="episode_card_section">
-          <h2 id="episode_title"></h2>
-          <span id="episode_code"></span>
-          <h3 id="season_number_title">Season number: <span id="season_number"></span></h3>
-          <h3 id="episode_number_title">Episode number: <span id="episode_number"></span></h3>
-          <h3 id="episode_duration_title">Duration: <span id="episode_duration"></span></h3>
-          <img src="" alt="" id="episode_img_medsize">
-          <div id="episode_summary"></div>
-          <a href="" id="episode_button" target="_blank">Read more</a>
-        </section>
-      </template>
+    <div id="front-page-view">
+      <div id="show-search-bar">
+        <select id="show-dropdown">
+          <option value="default">Select a show...</option>
+        </select>
+        <input class="show-filter" type="text" placeholder="Filter shows..." />
+        <p class="show-num-count"></p>
+      </div>
+      <div id="show-list"></div>
+    </div>
+    <div id="episode-page-view" style="display: none;">
+      <div id="episode-search-bar">
+        <button class="back-to-shows">Back to Shows</button>
+        <select id="episode-dropdown">
+          <option value="default">Select an episode...</option>
+        </select>
+        <input class="episode-filter" type="text" placeholder="Filter episodes..." />
+        <p class="episode-num-count"></p>
+      </div>
+      <div id="episode-list"></div>
     </div>
   </div>
-
-  <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-  <script src="episodes.js"></script>
+  <template id="show-card-template">
+    <div class="show-card">
+      <h2 class="show-title"></h2>
+      <img class="show-image" src="" alt="Show banner">
+      <div class="show-info">
+        <p><strong>Genres:</strong> <span class="show-genres"></span></p>
+        <p><strong>Status:</strong> <span class="show-status"></span></p>
+        <p><strong>Rating:</strong> <span class="show-rating"></span></p>
+        <p><strong>Runtime:</strong> <span class="show-runtime"></span> minutes</p>
+      </div>
+      <p class="show-summary"></p>
+    </div>
+  </template>
+  <template id="episode-card-template">
+    <div class="episode-card">
+      <h3 class="episode-title"></h3>
+      <img class="episode-image" src="" alt="Episode banner">
+      <p class="episode-summary"></p>
+    </div>
+  </template>
 
   <!-- Loads YOUR javascript code -->
   <script src="script.js"></script>

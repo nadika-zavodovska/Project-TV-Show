@@ -1,32 +1,95 @@
-body{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;  
+body {
+  background-color: #181818;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
 }
-h3{
-  margin: 5px;
-}
-#episode_title{
+
+.show-page-title {
   text-align: center;
-  width: 100%; 
 }
-#episode_card_section{
+
+#show-search-bar,
+#episode-search-bar {
   display: flex;
-  flex-direction: column;
+  gap: 20px;
+  justify-content: center
+}
+
+#show-list,
+#episode-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+  padding-bottom: 60px;
+}
+
+#show-dropdown,
+.show-filter,
+#episode-dropdown,
+.episode-filter {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.show-title:hover {
+  text-decoration: underline;
+}
+
+.back-to-shows {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.back-to-shows:hover {
+  background-color: rgb(209, 209, 209);
+}
+
+.show-info {
+  margin-top: 23%;
+}
+
+.show-card,
+.episode-card {
   flex-basis: 27%;
-  background-color: rgb(255, 238, 160);
-  border-radius: 10px;
-  padding: 25px;
-  margin-bottom: 20px;
-  margin-right: 20px;
+  background-color: #232222;
+  padding: 20px 30px;
 }
-#episode_title{
-  display: inline;
+
+.show-image {
+  float: left;
+  padding-right: 30px;
+  padding-bottom: 35px;
 }
-#episode_img_medsize{
-  border-radius: 10px;
+
+.episode-image {
+  width: 100%;
+  padding-bottom: 25px;
 }
-#episode_duration{
-  font-weight: 600;
+
+.show-summary {
+  clear: left;
+}
+
+@media (max-width: 678px) {
+
+  #show-search-bar,
+  #episode-search-bar {
+    display: block;
+  }
+
+  #show-dropdown,
+  .show-filter,
+  #episode-dropdown,
+  .episode-filter {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .show-card,
+  .episode-card {
+    flex-basis: 90%;
+  }
 }
